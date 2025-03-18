@@ -3,8 +3,9 @@
 var gBallSize = 100
 
 function onBallClick(elBall) {
-  gBallSize = gBallSize + 50
-  if (gBallSize === 450) {
+  const randSize = getRandomIntInclusive(20,60)
+  gBallSize = gBallSize + randSize
+  if (gBallSize >= 450) {
     gBallSize = 100
   }
   elBall.style.width = gBallSize + 'px'
