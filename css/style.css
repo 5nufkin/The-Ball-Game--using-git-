@@ -22,6 +22,9 @@ h1{
   height: 100px;
   margin: auto;
   
+  font-size: 22px;
+  font-weight: bold;
+
   background-color: orange;
   border-radius: 50%;
   padding: 1rem;
