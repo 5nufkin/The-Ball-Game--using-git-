@@ -1,28 +1,37 @@
 'use strict'
 
 const gBalls = []
-
-gBalls[0] = { id: 100, color: 'orange', size: 100 }
-gBalls[1] = { id: 101, color: 'lightseagreen', size: 100 }
-gBalls[2] = { id: 101, color: 'steelblue', size: 100 }
+gBalls[0] = { id: 1, color: 'orange', size: 100 }
+gBalls[1] = { id: 2, color: 'lightseagreen', size: 100 }
+gBalls[2] = { id: 3, color: 'steelblue', size: 100 }
 
 function onBallClick(elBall, maxDiameter) {
-  var ballIdx
-  if (elBall.classList.contains('ball1')) {
-    ballIdx = 0
-  } else if (elBall.classList.contains('ball2')) {
-    ballIdx = 1
-  }
+  const ball = gBalls[getBallIdx(elBall)]
 
   const randSize = getRandomIntInclusive(20, 60)
-  gBalls[ballIdx].size+=randSize
-  if (gBalls[ballIdx].size >= maxDiameter) {
-    gBalls[ballIdx].size = 100
-  }
-  gBalls[ballIdx].color = getRandomColor()
+  changeBallSize(ball, randSize)
 
-  elBall.style.width = gBalls[ballIdx].size + 'px'
-  elBall.style.height = gBalls[ballIdx].size + 'px'
-  elBall.innerText = gBalls[ballIdx].size
-  elBall.style.backgroundColor = gBalls[ballIdx].color
+  if (ball.size >= maxDiameter) {
+    ball.size = 100
+
+    elBall.style.width = ball.size + 'px'
+    elBall.style.height = ball.size + 'px'
+  }
+
+  changeBallColor(ball, getRandomColor())
+  elBall.innerText = ball.size
+}
+
+function changeBallSize(ball, changeValue) {
+  ball.size += changeValue
+
+  const elBall = getElBall(ball)
+  elBall.style.width = ball.size + 'px'
+  elBall.style.height = ball.size + 'px'
+}
+
+function changeBallColor(ball, newColor) {
+  ball.color = newColor
+  const elBall = getElBall(ball)
+  elBall.style.backgroundColor = ball.color
 }
