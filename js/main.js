@@ -2,10 +2,10 @@
 
 var gBallSize = 100
 
-function onBallClick(elBall) {
+function onBallClick(elBall, maxDiameter) {
   const randSize = getRandomIntInclusive(20,60)
   gBallSize = gBallSize + randSize
-  if (gBallSize >= 450) {
+  if (gBallSize >= maxDiameter) {
     gBallSize = 100
   }
   elBall.style.width = gBallSize + 'px'
