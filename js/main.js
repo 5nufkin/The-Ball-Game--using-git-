@@ -1,29 +1,28 @@
 'use strict'
 
-var gBall1Size = 100
-var gBall2Size = 100
+const gBalls = []
+
+gBalls[0] = { id: 100, color: 'orange', size: 100 }
+gBalls[1] = { id: 101, color: 'lightseagreen', size: 100 }
+gBalls[2] = { id: 101, color: 'steelblue', size: 100 }
 
 function onBallClick(elBall, maxDiameter) {
-  var currBallSize
+  var ballIdx
   if (elBall.classList.contains('ball1')) {
-    currBallSize = gBall1Size
+    ballIdx = 0
   } else if (elBall.classList.contains('ball2')) {
-    currBallSize = gBall2Size
+    ballIdx = 1
   }
 
-  const randSize = getRandomIntInclusive(20,60)
-  currBallSize = currBallSize + randSize
-  if (currBallSize >= maxDiameter) {
-    currBallSize = 100
+  const randSize = getRandomIntInclusive(20, 60)
+  gBalls[ballIdx].size+=randSize
+  if (gBalls[ballIdx].size >= maxDiameter) {
+    gBalls[ballIdx].size = 100
   }
+  gBalls[ballIdx].color = getRandomColor()
 
-  elBall.style.width = currBallSize + 'px'
-  elBall.style.height = currBallSize + 'px'
-  elBall.innerText = currBallSize
-  elBall.style.backgroundColor = getRandomColor()
-  if (elBall.classList.contains('ball1')) {
-    gBall1Size = currBallSize
-  } else if (elBall.classList.contains('ball2')) {
-    gBall2Size = currBallSize
-  }
+  elBall.style.width = gBalls[ballIdx].size + 'px'
+  elBall.style.height = gBalls[ballIdx].size + 'px'
+  elBall.innerText = gBalls[ballIdx].size
+  elBall.style.backgroundColor = gBalls[ballIdx].color
 }
