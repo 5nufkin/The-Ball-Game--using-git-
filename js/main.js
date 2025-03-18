@@ -52,17 +52,10 @@ function onSwap() {
 }
 
 function onShrinkBalls() {
-  // const ball1 = gBalls[0]
-  // const ball2 = gBalls[1]
-
-  // changeBallSize(ball1, -getRandomIntInclusive(20, 60))
-  // changeBallSize(ball2, -getRandomIntInclusive(20, 60))
-
-  // if (ball1.size)
-
     for (var i = 0; i < gBalls.length; i++) {
       const currBall = gBalls[i]
       changeBallSize(currBall, -getRandomIntInclusive(20, 60))
+
       if (currBall.size < 100) {
         currBall.size = 100
         const elBall = getElBall(currBall)
@@ -71,4 +64,9 @@ function onShrinkBalls() {
         elBall.innerText = currBall.size
       }
     }
+}
+
+function onChangeBackground() {
+  const elBody = document.querySelector('body')
+  elBody.style.backgroundColor = getRandomColor()
 }
