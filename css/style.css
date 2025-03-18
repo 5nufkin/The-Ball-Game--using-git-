@@ -20,14 +20,21 @@ h1{
 .ball{
   width: 100px;
   height: 100px;
-  margin: auto;
+  margin: 1em auto;
   
   font-size: 22px;
   font-weight: bold;
 
-  background-color: orange;
   border-radius: 50%;
   padding: 1rem;
   cursor: pointer;
   transition: 1s;
+}
+
+.ball1{
+  background-color: orange;
+}
+
+.ball2{
+  background-color: lightseagreen;
 }
