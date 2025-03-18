@@ -16,10 +16,10 @@ function onBallClick(elBall, maxDiameter) {
 
     elBall.style.width = ball.size + 'px'
     elBall.style.height = ball.size + 'px'
+    elBall.innerText = ball.size
   }
 
   changeBallColor(ball, getRandomColor())
-  elBall.innerText = ball.size
 }
 
 function changeBallSize(ball, changeValue) {
@@ -28,10 +28,26 @@ function changeBallSize(ball, changeValue) {
   const elBall = getElBall(ball)
   elBall.style.width = ball.size + 'px'
   elBall.style.height = ball.size + 'px'
+  elBall.innerText = ball.size
 }
 
 function changeBallColor(ball, newColor) {
   ball.color = newColor
   const elBall = getElBall(ball)
   elBall.style.backgroundColor = ball.color
+}
+
+function onSwap() {
+  const tempBall = {}
+  const ball1 = gBalls[0]
+  const ball2 = gBalls[1]
+
+  tempBall.size = ball1.size
+  tempBall.color = ball1.color
+
+  changeBallSize(ball1, (ball2.size-ball1.size))
+  changeBallColor(ball1, ball2.color)
+
+  changeBallSize(ball2, tempBall.size-ball2.size)
+  changeBallColor(ball2, tempBall.color)
 }
